@@ -1,0 +1,5 @@
+#' @import behavr
+periodogram <- function(){
+
+
+}

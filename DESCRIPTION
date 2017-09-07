@@ -7,8 +7,10 @@ Authors@R: c(
     person("Luis", "Garcia", role = c("aut"), email = "luis.garcia@uni-muenster.de")
     )
 Description: Use behavioural variables to compute period, rhythmicity and other circadian parameters.
+Depends:  
+    R (>= 3.00),
+    behavr
 Imports: 
-  behavr,
   data.table,
   lomb,
   ggplot2

@@ -9,10 +9,14 @@
 #' @return [data.table] ... todo
 #' @examples
 #' x <- behavr::toy_dam_data(duration = days(20))$activity
-#' s <- fourier_periodogram(x, period_range = c(hours(08), hours(18)))
+#' s <- fourier_periodogram(x,  period_range = c(hours(08), hours(18)))
 #' s[, period := period/hours(1)]
 #' # to plot:
-#' # ggplot(s, aes(period, spec)) + geom_line()
+#' # ggplot2::ggplot(s, ggplot2::aes(period, power)) + ggplot2::geom_line()
+#' s <- fourier_periodogram(x, sampling_rate= 1/mins(2),  period_range = c(hours(08) * 2, hours(18) * 2))
+#' s[, period := period/hours(1)]
+#' # to plot:
+#' # ggplot2::ggplot(s, ggplot2::aes(period, power)) + ggplot2::geom_line()
 #' @export
 fourier_periodogram <- function(x,
                                 period_range = c(hours(16), hours(32)),
@@ -20,17 +24,20 @@ fourier_periodogram <- function(x,
                                 alpha = 0.05
                                           ){
   raw_periodo <- spec.pgram(x, detrend=TRUE, plot=FALSE)
-  fourier_analysis <- data.table::data.table(spec = raw_periodo$spec,
-                                             freq = raw_periodo$freq *sampling_rate # frequence, in seconds
+  out <- data.table::data.table(power = raw_periodo$spec,
+                                period = 1/ (raw_periodo$freq *sampling_rate) # frequence, in seconds
                                              )
-    fourier_analysis <- fourier_analysis[, period := 1 / freq]
-  fourier_analysis <- fourier_analysis[ period %between% period_range]
 
-  # peak period = argmax[period](spec)
-  peak_period <-fourier_analysis[spec == max(spec), period]
+  out <- out[ period %between% period_range]
+
+  # peak period = argmax[period](power)
+  peak_period <-out[power == max(power), period]
+
+  # one should compute the pvalues directly
+  out[, p_value := NA]
 
   # Compute the significance level with probablility 0.01, acordind to fisher 1929
   # signif_level is independent of period with this method
-  fourier_analysis[, signif_level := - mean(spec) * log((1 - (1 - alpha) ^ (1 / .N)))]
-  return(fourier_analysis)
+  out[, signif_level := - mean(power) * log((1 - (1 - alpha) ^ (1 / .N)))]
+  out
 }

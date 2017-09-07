@@ -24,8 +24,12 @@ TODO
 }
 \examples{
 x <- behavr::toy_dam_data(duration = days(20))$activity
-s <- fourier_periodogram(x, period_range = c(hours(08), hours(18)))
+s <- fourier_periodogram(x,  period_range = c(hours(08), hours(18)))
 s[, period := period/hours(1)]
 # to plot:
-# ggplot(s, aes(period, spec)) + geom_line()
+# ggplot2::ggplot(s, ggplot2::aes(period, power)) + ggplot2::geom_line()
+s <- fourier_periodogram(x, sampling_rate= 1/mins(2),  period_range = c(hours(08) * 2, hours(18) * 2))
+s[, period := period/hours(1)]
+# to plot:
+# ggplot2::ggplot(s, ggplot2::aes(period, power)) + ggplot2::geom_line()
 }

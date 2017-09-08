@@ -3,6 +3,7 @@
 export(chi_sq_periodogram)
 export(fourier_periodogram)
 export(ls_periodogram)
+export(periodogram)
 import(behavr)
 importFrom(data.table,"%between%")
 importFrom(data.table,":=")

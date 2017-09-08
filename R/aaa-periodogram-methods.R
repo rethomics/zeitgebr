@@ -3,9 +3,8 @@
 #' These functions provides a series of methods to assess periodicity of circadian processes.
 #'
 #' @param x numeric vector
-#' @param period_range vector of size 2 defining minimal and maximal range of period to study (in seconds)
 #' @param sampling_rate the -- implicitly regular -- sampling rate of x (in hertz)
-#' @param alpha  significance level
+#' @inheritParams periodogram
 #' @return a [data.table] with the columns:
 #' * `period` -- the period (in s)
 #' * `power` -- the power (or equivalent) for a given period

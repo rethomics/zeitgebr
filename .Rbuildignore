@@ -10,3 +10,5 @@
 ^revdep$
 ^.*\.tar\.gz$
 ^.*\.pdf$
+raw_data/
+

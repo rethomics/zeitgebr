@@ -1,19 +1,5 @@
-#' Chi Square Periodogram
-#'
-#' TODO
-#'
-#' @inheritParams fourier_periodogram
 #' @param time_resolution the resolution of periods to scan
-#' @examples
-#' x <- behavr::toy_dam_data(duration = days(5))$activity
-#' s <- chi_sq_periodogram(x)
-#' \dontrun{
-#' ggplot2::ggplot(s, ggplot2::aes(period, power)) +
-#'         ggplot2::geom_line() +
-#'         ggplot2::geom_line (ggplot2::aes(y = signif_level), linetype="dashed", colour="grey") +
-#'         ggplot2::scale_x_time()
-#'}
-#' @seealso [xsp::chiSqPeriodogram] (code derived from)
+#' @rdname periodogram_methods
 #' @export
 chi_sq_periodogram <- function(x,
                            period_range = c(hours(16), hours(32)),
@@ -26,7 +12,7 @@ chi_sq_periodogram <- function(x,
     period = seq(period_range[1],period_range[2],by=time_resolution)
   )
   out[ , power := sapply(period, calc_Qp, x, sampling_rate)]
-  out[ , signif_level := qchisq((1 - alpha) ^ (1 / .N), round(period * sampling_rate))]
+  out[ , signif_threshold := qchisq((1 - alpha) ^ (1 / .N), round(period * sampling_rate))]
   out
 }
 

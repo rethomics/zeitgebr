@@ -6,11 +6,11 @@
 #' @param oversampling the oversampling factor
 #' @examples
 #' x <- behavr::toy_dam_data(duration = days(5))$activity
-#' s <- lomb_periodogram(x,  period_range = c(hours(08), hours(18)))
+#' s <- ls_periodogram(x,  period_range = c(hours(08), hours(18)))
 #' # ggplot2::ggplot(s, ggplot2::aes(period, power)) + ggplot2::geom_line() + ggplot2::scale_x_time()
 #' @seealso [lomb::lsp] the orginal function
 #' @export
-lomb_periodogram <- function(x,
+ls_periodogram <- function(x,
                                 period_range = c(hours(16), hours(32)),
                                 sampling_rate = 1 / mins(1),
                                 alpha = 0.05,

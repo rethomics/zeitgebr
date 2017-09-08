@@ -1,7 +1,9 @@
 #' @import behavr
 #' @importFrom data.table ":="
 #' @importFrom data.table "%between%"
-periodogram <- function(){
 
+NULL
+periodogram <- function(data, FUN = ls_periodogram, ...){
 
+  FUN()
 }

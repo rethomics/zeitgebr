@@ -10,6 +10,8 @@ NULL
 #' @param period_range vector of size 2 defining minimal and maximal range of period to study (in seconds)
 #' @param resample_rate frequency to resample (up or down) the data at (in hertz)
 #' @param alpha  significance level
+#' @param FUN  function used to compute periodogram (see [periodogram_methods])
+#' @param ...  additional arguments to be passed to FUN
 #' @export
 periodogram <- function(var,
                         data,

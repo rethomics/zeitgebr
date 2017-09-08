@@ -17,6 +17,10 @@ periodogram(var, data, period_range = c(hours(16), hours(32)),
 \item{resample_rate}{frequency to resample (up or down) the data at (in hertz)}
 
 \item{alpha}{significance level}
+
+\item{FUN}{function used to compute periodogram (see \link{periodogram_methods})}
+
+\item{...}{additional arguments to be passed to FUN}
 }
 \description{
 This function builds peroidograms, with one of several methods, for each individual of \link{behavr} table

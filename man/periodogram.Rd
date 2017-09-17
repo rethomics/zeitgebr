@@ -22,6 +22,14 @@ periodogram(var, data, period_range = c(hours(16), hours(32)),
 
 \item{...}{additional arguments to be passed to FUN}
 }
+\value{
+a \link{behavr} table with the
+}
 \description{
 This function builds peroidograms, with one of several methods, for each individual of \link{behavr} table
+}
+\examples{
+data(dams_sample)
+pdt <- periodogram(activity, dams_sample, FUN=ls_periodogram, oversampling = 4)
+pdt <- periodogram(activity, dams_sample, FUN=chi_sq_periodogram)
 }

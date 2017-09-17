@@ -1,5 +1,5 @@
 library(damr)
-query <- data.frame(
+metadata <- data.frame(
   file = "dams_sample.txt",
   start_datetime = "2017-01-16 08:00:00",
   stop_datetime = "2017-01-26 00:09:00",
@@ -7,10 +7,12 @@ query <- data.frame(
   period_group = rep(c("long", "short", "wt"), c(10,11,11))
 )
 
-dams_sample <- damr::query_dam2(".", query)
+metadata <- damr::link_dam2_metadata(metadata, ".")
+dams_sample <- damr::load_dam2(metadata)
 
-ggetho::ggetho(dt, ggplot2::aes(y=activity))  +
+
+ggetho::ggetho(dams_sample, ggplot2::aes(y=activity))  +
   ggetho::stat_pop_etho() +
-        ggplot2::facet_grid(period ~ .)
+        ggplot2::facet_grid(period_group ~ .)
 
 devtools::use_data(dams_sample, overwrite = TRUE)

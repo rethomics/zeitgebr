@@ -1,10 +1,7 @@
-#' @import behavr
-#' @importFrom data.table ":="
-#' @importFrom data.table "%between%"
-NULL
 #' Computes periodograms
 #'
 #' This function builds peroidograms, with one of several methods, for each individual of [behavr] table
+#'
 #' @param var variable to analyse
 #' @param data [behavr] table
 #' @param period_range vector of size 2 defining minimal and maximal range of period to study (in seconds)
@@ -12,6 +9,12 @@ NULL
 #' @param alpha  significance level
 #' @param FUN  function used to compute periodogram (see [periodogram_methods])
 #' @param ...  additional arguments to be passed to FUN
+#' @return a [behavr] table with the
+#'
+#' @examples
+#' data(dams_sample)
+#' pdt <- periodogram(activity, dams_sample, FUN=ls_periodogram, oversampling = 4)
+#' pdt <- periodogram(activity, dams_sample, FUN=chi_sq_periodogram)
 #' @export
 periodogram <- function(var,
                         data,

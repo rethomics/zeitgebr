@@ -3,32 +3,36 @@
 language: R
 sudo: false
 cache: packages
-
 latex: true
+dist: trusty 
 
-r:
-  - oldrel
-  - release
-  - devel
+env:
+    global:
+        - MAKEFLAGS="-j 2"
 
-r_github_packages:
-   - rethomics/behavr
+  
+matrix:
+  include:
+    - r: oldrel
+    - r: release
+      env: R_RELEASE=true  
+    - r: devel
+      env: R_DEVEL=true
 
-r_packages:
-  - covr
-  - knitr
-
-after_success:
-  - Rscript -e 'covr::codecov()'
+    
+github_packages:
+    rethomics/behavr
 
 script:
     - R CMD build .
     - R CMD check *tar.gz
-    - sh .publish_doc.sh
+    - if [[ "${R_RELEASE}" ]]; then sh .publish_doc.sh; fi
 
-
+after_success:
+    - if [[ "${R_RELEASE}" ]]; then R -e 'covr::codecov()'; fi
+#- if [[ "${R_DEVEL}" ]]; then cat /home/travis/build/rethomics/behavr/behavr.Rcheck/00install.out; fi
 
 notifications:
-  email:
-    on_success: change
-    on_failure: change
+    email:
+        on_success: change
+        on_failure: change

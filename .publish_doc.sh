@@ -9,8 +9,6 @@ echo "R version: $TRAVIS_R_VERSION"
 echo "GITHUB_PAT: OK"
 [ "${TRAVIS_BRANCH}" != "master" ] && exit 0
 echo "BRANCH: master"
-[ "${TRAVIS_R_VERSION}" != "devel" ] && exit 0
-echo "R: devel"
 
 git config user.name "rapporter-travis"
 git config user.email "travis"
@@ -26,10 +24,3 @@ make README.md
 git add *.pdf README.md
 git commit -m"Automatic deployment after $TRAVIS_COMMIT [ci skip]" || true
 git push -q origin master
-
-#~ git clone -b master https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git book-output
-#~ cd book-output
-#~ cp -r ../_book/* ./
-#~ git add --all *
-#~ git commit -m"Automatic deployment after $TRAVIS_COMMIT [ci skip]" || true
-#~ git push -q origin master

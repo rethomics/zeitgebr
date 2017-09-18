@@ -14,7 +14,10 @@ Imports:
   data.table,
   lomb,
   ggplot2
-Suggests: testthat
+Suggests: 
+    testthat,
+    covr,
+    knitr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

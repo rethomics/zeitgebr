@@ -10,7 +10,9 @@ env:
     global:
         - MAKEFLAGS="-j 2"
 
-  
+r_github_packages:
+    rethomics/behavr
+
 matrix:
   include:
     - r: oldrel
@@ -18,10 +20,6 @@ matrix:
       env: R_RELEASE=true  
     - r: devel
       env: R_DEVEL=true
-
-    
-github_packages:
-    rethomics/behavr
 
 script:
     - R CMD build .

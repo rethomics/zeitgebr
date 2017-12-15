@@ -25,3 +25,5 @@ ls_periodogram <- function(x,
   #frecuency to hours.
   out
 }
+
+

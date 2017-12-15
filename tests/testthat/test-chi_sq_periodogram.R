@@ -8,7 +8,6 @@ test_that("chi-sq periodogram works", {
              by = id]
 
 
-  p <- chi_sq_periodogram(rep(0 , 1e4), sampling_rate = 1/60)
-
 })
+
 

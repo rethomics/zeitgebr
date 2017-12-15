@@ -30,6 +30,15 @@ periodogram <- function(var,
                                 x_bin_length = 1 / resample_rate,
                                 string_xy = TRUE)
   data.table::setnames(regular_data, var_of_interest, "var__")
+
+  reg_data_nval <- regular_data[, .(n_val = length(unique(var__))),
+               by = c(data.table::key(regular_data))]
+
+  invalid <- reg_data_nval[n_val < 2, id]
+  if(length(invalid) > 0)
+    warning(sprintf("Removing individuals that have only one unique value for `val`:\n%s",paste(invalid, sep="\n")))
+
+  regular_data <- regular_data[!(id %in% invalid)]
   regular_data[, FUN(var__,
                      period_range = period_range,
                      sampling_rate = resample_rate,
@@ -38,3 +47,5 @@ periodogram <- function(var,
                by = c(data.table::key(data))]
 
 }
+
+

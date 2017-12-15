@@ -13,7 +13,7 @@ ac_periodogram <- function(x,
 
   data.table(period = res$lag[min_lag:length(res$lag)] /sampling_rate,
              power = res$acf[min_lag:length(res$lag)],
-             signif_level = clim
+             signif_threshold = clim
   )
 }
 

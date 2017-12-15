@@ -16,27 +16,25 @@ chi_sq_periodogram <- function(x,
   out
 }
 
-#'calculate Qp
+#' Calculate Qp
 #'
-#'@param values activity values (each value represents the measured activity in a minute)
-#'@param varPer a period at which the chi-squared statistics is to be calculated
+#' @param values activity values (each value represents the measured activity in a minute)
+#' @param target_period a period at which the chi-squared statistics is to be calculated
 #'
-#'@return a numeric of the calculated chi-squared statistics at the given varPer
-#'@noRd
-calc_Qp <- function(varPer, values, sampling_rate){
-  col_num <- round(varPer * sampling_rate)
+#' @return a numeric of the calculated chi-squared statistics at the given varPer
+#' @noRd
+calc_Qp <- function(target_period, values, sampling_rate){
+  col_num <- round(target_period * sampling_rate)
+  #row_num <- ceiling(length(values) / col_num)
+  row_num <- length(values) / col_num
+  dt <- data.table::data.table( col = (0 : (length(values) -1) %% col_num) + 1,
+                                #row = ceiling(1:length(values) / col_num),
+                                values = values,
+                                key = "col")
+  avg_P <- dt[, .(avg_P = mean(values)),by=col]$avg_P
+  avg_all <- mean(values)
+  numerator <- sum((avg_P - avg_all) ^ 2) *  (nrow(dt) * row_num)
 
-  row_num <- floor(length(values)/col_num)
-  values_num <- row_num * col_num
-  folded_values <- matrix(values[1 : values_num],
-                          ncol = col_num,
-                          byrow=T)
-
-
-  avg_P <- colMeans(folded_values)
-  avg_all <- mean(avg_P)
-  numerator <- sum((avg_P - avg_all) ^ 2)
-  denom <- sum((values - avg_all) ^ 2) / (values_num * row_num)
-  qp <- numerator / denom
-  qp
+  denom <- sum((values - avg_all) ^ 2)
+  numerator / denom
 }

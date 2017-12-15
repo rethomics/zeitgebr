@@ -12,7 +12,8 @@ We also provide a [conventional pdf documentation](zeitgebr.pdf).
 
 ## Installation
 
-```{r,eval=F}
+
+```r
 library(devtools)
 install_github("rethomics/behavr")
 install_github("rethomics/zeitgebr")

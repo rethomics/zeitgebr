@@ -11,10 +11,13 @@ ac_periodogram <- function(x,
   res <- acf(x, lag.max = max_lag, plot = F)
   clim <-  qnorm((1 -alpha))/sqrt(res$n.used)
 
-  data.table(period = res$lag[min_lag:length(res$lag)] /sampling_rate,
-             power = res$acf[min_lag:length(res$lag)],
-             signif_threshold = clim
-  )
+
+
+  out <- data.table(period = res$lag[min_lag:length(res$lag)] /sampling_rate,
+                     power = res$acf[min_lag:length(res$lag)],
+                     signif_threshold = clim
+                  )
+
+  out[, p_value := 1 - pnorm(power * sqrt(res$n.used))]
+  out
 }
-
-

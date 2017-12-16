@@ -25,8 +25,6 @@ ls_periodogram <- function(x,
                                 p_value = p_values,
                                 signif_threshold = lsp_results$sig.level)
   out[power == lsp_results$peak]
-
-  #frecuency to hours.
   out
 }
 

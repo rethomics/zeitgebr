@@ -7,7 +7,6 @@ test_that("chi-sq periodogram works", {
               chi_sq_periodogram(activity, sampling_rate = 1/60),
              by = id]
 
-
 })
 
 

@@ -8,11 +8,14 @@
 #' @return a [data.table] with the columns:
 #' * `period` -- the period (in s)
 #' * `power` -- the power (or equivalent) for a given period
+#' * `p_value` -- the significance of the power
 #' * `signif_threshold` -- the significance threshold of the power (at alpha)
-#' @details
-#' TODO
+# @details
+# TODO
 #' @seealso
 #' * [lomb::lsp] the orginal function for `ls_periodogram`
-#' * [xsp::chiSqPeriodogram] (code derived from)
+#' * [xsp::chiSqPeriodogram] (code modified from)
+#' * [acf]  the orginal function for `ac_periodogram`
 #' @name periodogram_methods
 NULL
+

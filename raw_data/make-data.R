@@ -10,7 +10,6 @@ metadata <- data.frame(
 metadata <- damr::link_dam2_metadata(metadata, ".")
 dams_sample <- damr::load_dam2(metadata)
 
-
 ggetho::ggetho(dams_sample, ggplot2::aes(y=activity))  +
   ggetho::stat_pop_etho() +
         ggplot2::facet_grid(period_group ~ .)

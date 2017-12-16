@@ -9,7 +9,7 @@
 #' @param alpha  significance level
 #' @param FUN  function used to compute periodogram (see [periodogram_methods])
 #' @param ...  additional arguments to be passed to FUN
-#' @return a [behavr] table with the
+#' @return a [behavr] table with TODO
 #'
 #' @examples
 #' data(dams_sample)

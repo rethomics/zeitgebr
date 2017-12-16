@@ -23,7 +23,7 @@ periodogram(var, data, period_range = c(hours(16), hours(32)),
 \item{...}{additional arguments to be passed to FUN}
 }
 \value{
-a \link{behavr} table with the
+a \link{behavr} table with TODO
 }
 \description{
 This function builds peroidograms, with one of several methods, for each individual of \link{behavr} table

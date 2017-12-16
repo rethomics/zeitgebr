@@ -11,10 +11,14 @@ chi_sq_periodogram <- function(x,
   out <- data.table::data.table(
     period = seq(period_range[1],period_range[2],by=time_resolution)
   )
+  corrected_alpha <- 1 - out[,(1 - alpha) ^ (1 / .N)]
   out[ , power := sapply(period, calc_Qp, x, sampling_rate)]
-  out[ , signif_threshold := qchisq((1 - alpha) ^ (1 / .N), round(period * sampling_rate))]
-  out
+  out[ , signif_threshold := qchisq(corrected_alpha , round(period * sampling_rate), lower.tail = FALSE)]
+  out[ , p_value := pchisq(power, round(period * sampling_rate), lower.tail = FALSE)]
+
+
 }
+
 
 #' Calculate Qp
 #'

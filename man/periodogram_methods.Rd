@@ -39,18 +39,17 @@ a \link{data.table} with the columns:
 \itemize{
 \item \code{period} -- the period (in s)
 \item \code{power} -- the power (or equivalent) for a given period
+\item \code{p_value} -- the significance of the power
 \item \code{signif_threshold} -- the significance threshold of the power (at alpha)
 }
 }
 \description{
 These functions provides a series of methods to assess periodicity of circadian processes.
 }
-\details{
-TODO
-}
 \seealso{
 \itemize{
 \item \link[lomb:lsp]{lomb::lsp} the orginal function for \code{ls_periodogram}
-\item \link[xsp:chiSqPeriodogram]{xsp::chiSqPeriodogram} (code derived from)
+\item \link[xsp:chiSqPeriodogram]{xsp::chiSqPeriodogram} (code modified from)
+\item \link{acf}  the orginal function for \code{ac_periodogram}
 }
 }

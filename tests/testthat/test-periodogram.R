@@ -7,8 +7,14 @@ test_that("periodrogram works in normal conditions", {
   pdt <- periodogram(activity, dams_sample, FUN=ac_periodogram)
   pdt <- rejoin(pdt)
 
+
   pdt <- periodogram(activity, dams_sample, FUN=ls_periodogram, oversampling = 4)
+  pdt[power > signif_threshold, max(p_value)]
+  pdt[power < signif_threshold]
   pdt <- rejoin(pdt)
+
+  pdt
+
   expect_equal(pdt[,mean(power),by=period_group][,V1], c(38.68601,23.71387,49.16648), tolerance=1e-5)
 
   pdt <- periodogram(activity, dams_sample, FUN=chi_sq_periodogram)

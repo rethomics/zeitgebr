@@ -54,8 +54,8 @@ resample <- function(data, var_of_interest, resample_rate){
                                         x_bin_length = 1 / resample_rate,
                                         string_xy = TRUE)
   f <- function(d){
-    new_x <- seq(from = regular_data[1, t], to = regular_data[.N, t], by=1/resample_rate)
-    out <- as.data.table(approx(d[["t"]],y = d[[var_of_interest]], xout = new_x))
+    new_x <- seq(from = d[1, t], to = d[.N, t], by=1/resample_rate)
+    out <- na.omit(as.data.table(approx(d[["t"]],y = d[[var_of_interest]], xout = new_x)))
     setnames(out, c("x", "y"), c("t",var_of_interest))
     out
   }

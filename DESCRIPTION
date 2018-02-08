@@ -13,7 +13,8 @@ Depends:
 Imports: 
   data.table,
   lomb,
-  ggplot2
+  ggplot2, 
+  pracma
 Suggests: 
     testthat,
     covr,

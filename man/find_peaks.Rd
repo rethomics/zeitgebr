@@ -4,14 +4,12 @@
 \alias{find_peaks}
 \title{Find peaks in a periodogram}
 \usage{
-find_peaks(data, n_peaks = 3, alpha = 0.05)
+find_peaks(data, n_peaks = 3)
 }
 \arguments{
-\item{data}{\link[behavr:behavr]{behavr::behavr} table represneted a periodogram, as returned by \link{periodogram}}
+\item{data}{\link[behavr:behavr]{behavr::behavr} table representing a periodogram, as returned by \link{periodogram}}
 
 \item{n_peaks}{maximal numbers of peak to be detected}
-
-\item{alpha}{the significance threshold of p-values over which peaks are ignored}
 }
 \value{
 \link[behavr:behavr]{behavr::behavr} table that is \code{data} with an extra column \code{peak}.
@@ -25,7 +23,7 @@ Only the significant (with threshold `alpha``) peaks are extracted.
 \examples{
 data(dams_sample)
 per_dt_xs <- periodogram(activity, dams_sample, FUN=chi_sq_periodogram)
-per_dt_xs_with_peaks <- find_peaks(per_dt_xs, alpha=1e-3)
+per_dt_xs_with_peaks <- find_peaks(per_dt_xs)
 per_dt_xs_with_peaks[peak==1]
 \dontrun{
 ggetho::ggperio(per_dt_xs_with_peaks) + geom_line()  +

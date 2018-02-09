@@ -6,7 +6,7 @@
 #' @param data [behavr::behavr] table representing a periodogram, as returned by [periodogram]
 #' @param n_peaks maximal numbers of peak to be detected
 #' @return [behavr::behavr] table that is `data` with an extra column `peak`.
-#' `peak` is filled with `NA` values except for rows match a peak.
+#' `peak` is filled with zeros except for rows match a peak.
 #' In which case, they have an integer value corresponding to the rank of the peak (e.g. 1 for the first peak).
 #' @examples
 #' data(dams_sample)
@@ -23,7 +23,8 @@
 find_peaks <-  function(data, n_peaks=3){
   out <- copy(data)
   out[ , peak := find_peaks_wapped(.SD, n_peaks = n_peaks), by=key(data)]
-  out
+  # peaks are 0, not NA
+  out[, peak := ifelse(is.na(peak), 0L, peak)]
 }
 
 #' @noRd

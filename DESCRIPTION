@@ -19,6 +19,8 @@ Suggests:
     testthat,
     covr,
     knitr
+Remotes:
+    rethomics/behavr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

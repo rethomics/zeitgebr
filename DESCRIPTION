@@ -1,12 +1,12 @@
 Package: zeitgebr
-Title: Analyse and Visualise Circadian Behaviours
-Date: 2017-09-06
+Title: Analysis of Circadian Behaviours
+Date: 2018-05-05
 Version: 0.0.0.9000
 Authors@R: c(
     person("Quentin", "geissmann", role = c("aut", "cre"), email = "qgeissmann@gmail.com"),
     person("Luis", "Garcia", role = c("aut"), email = "luis.garcia@uni-muenster.de")
     )
-Description: Use behavioural variables to compute period, rhythmicity and other circadian parameters.
+Description: Computes period, rhythmicity and other circadian variables.
 Depends:  
     R (>= 3.00),
     behavr,

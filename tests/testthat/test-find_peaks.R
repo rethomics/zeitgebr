@@ -13,8 +13,6 @@ test_that("find_peaks works in normal conditions", {
   pdt <- periodogram(activity, d, FUN=ac_periodogram)
   pdt <- find_peaks(pdt, alpha=1e-10)
 
-
-
   expect_equal(nrow(pdt[peak==1]), 0)
 
 })

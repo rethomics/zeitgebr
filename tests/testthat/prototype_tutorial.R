@@ -1,3 +1,5 @@
+library(damr)
+library(zeitgebr)
 data(dams_sample)
 dt <- copy(dams_sample)
 ######################
@@ -20,6 +22,7 @@ ggetho::ggperio(per_dt_xs) + geom_line()  +
       geom_line(aes(y=signif_threshold), colour="blue") +
       facet_wrap( ~ id, ncol = 8, labeller = id_labeller)
 
+
 ggetho::ggperio(per_dt_ls) + geom_line()  +
   geom_point(aes(colour = -log10(p_value))) +
   facet_wrap( ~ id, ncol = 8, labeller = id_labeller)
@@ -36,6 +39,7 @@ ggplot(rejoin(peaks), aes(y=peak_1, x=period_group)) + geom_jitter() + scale_y_t
 
 per_dt_ls_with_peaks <- find_peaks(per_dt_ls)
 per_dt_ac_with_peaks <- find_peaks(per_dt_ac)
+
 
 ggetho::ggperio(per_dt_ls_with_peaks, aes(peak=peak)) + geom_line()  +
   geom_line(aes(y=signif_threshold), colour="red") +

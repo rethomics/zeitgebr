@@ -9,11 +9,11 @@ Authors@R: c(
 Description: Use behavioural variables to compute period, rhythmicity and other circadian parameters.
 Depends:  
     R (>= 3.00),
-    behavr
+    behavr,
+    lomb,
+    pracma
 Imports: 
-  data.table,
-  lomb,
-  ggplot2
+  data.table
 Suggests: 
     testthat,
     covr,

@@ -19,16 +19,13 @@
 periodogram <- function(var,
                         data,
                         period_range = c(hours(16), hours(32)),
-                        resample_rate = 1 / mins(1),
-                        alpha = 0.05,
+                        resample_rate = 1 / mins(15),
+                        alpha = 0.01,
                         FUN = chi_sq_periodogram,
                         ...){
   var_of_interest <- deparse(substitute(var))
-  regular_data <- behavr::bin_apply_all(data,
-                                x = "t",
-                                y = var_of_interest,
-                                x_bin_length = 1 / resample_rate,
-                                string_xy = TRUE)
+  regular_data <- resample(data, var_of_interest, resample_rate)
+
   data.table::setnames(regular_data, var_of_interest, "var__")
 
   reg_data_nval <- regular_data[, .(n_val = length(unique(var__))),
@@ -48,4 +45,21 @@ periodogram <- function(var,
 
 }
 
+#' helper unit-testable function
+#' @noRd
+resample <- function(data, var_of_interest, resample_rate){
+  regular_data <- behavr::bin_apply_all(data,
+                                        x = "t",
+                                        y = var_of_interest,
+                                        x_bin_length = 1 / resample_rate,
+                                        string_xy = TRUE)
+  f <- function(d){
+    new_x <- seq(from = d[1, t], to = d[.N, t], by=1/resample_rate)
+    out <- na.omit(as.data.table(approx(d[["t"]],y = d[[var_of_interest]], xout = new_x)))
+    setnames(out, c("x", "y"), c("t",var_of_interest))
+    out
+  }
 
+  regular_data <- regular_data[, f(.SD), by=id]
+  regular_data
+}

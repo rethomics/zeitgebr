@@ -40,7 +40,8 @@ ggplot(rejoin(peaks), aes(y=peak_1, x=period_group)) + geom_jitter() + scale_y_t
 per_dt_ls_with_peaks <- find_peaks(per_dt_ls)
 per_dt_ac_with_peaks <- find_peaks(per_dt_ac)
 
-ggetho::ggperio(per_dt_ac_with_peaks, aes(peak=peak)) + geom_line()  +
+
+ggetho::ggperio(per_dt_ls_with_peaks, aes(peak=peak)) + geom_line()  +
   geom_line(aes(y=signif_threshold), colour="red") +
   geom_peak(peaks = 1:2, colour="blue") +
   facet_wrap( ~ id, ncol = 8, labeller = id_labeller)

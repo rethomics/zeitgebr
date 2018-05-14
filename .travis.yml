@@ -6,10 +6,12 @@ cache: packages
 latex: true
 dist: trusty 
 
+r_packages: desc
+
 env:
     global:
         - MAKEFLAGS="-j 2"
-
+ 
 matrix:
   include:
     - r: oldrel
@@ -17,17 +19,12 @@ matrix:
       env: R_RELEASE=true  
     - r: devel
       env: R_DEVEL=true
-
 script:
-    - if [[ "${R_DEVEL}" ]]; then R --silent -e "devtools::install_github('Rdatatable/data.table')"; fi
-    - R CMD build .
-    - R CMD check *tar.gz
-    - if [[ "${R_RELEASE}" ]]; then sh .publish_doc.sh; fi
-
+    - set -e
+    - bash .travis_check.sh
+    - bash .travis_deploy.sh 
 after_success:
-    - if [[ "${R_RELEASE}" ]]; then R -e 'covr::codecov()'; fi
-#- if [[ "${R_DEVEL}" ]]; then cat /home/travis/build/rethomics/behavr/behavr.Rcheck/00install.out; fi
-
+    - bash .travis_after_success.sh     
 notifications:
     email:
         on_success: change

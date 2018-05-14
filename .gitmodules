@@ -1,0 +1,3 @@
+[submodule "z_template_package"]
+	path = z_template_package
+	url = https://github.com/rethomics/z_template_package.git

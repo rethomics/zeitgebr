@@ -1,9 +1,9 @@
 Package: zeitgebr
-Title: Analyse and Visualise Circadian Behaviours
-Date: 2017-09-06
-Version: 0.0.0.9000
+Title: Analysis of Circadian Behaviours
+Date: 2018-05-15
+Version: 0.3.1
 Authors@R: c(
-    person("Quentin", "geissmann", role = c("aut", "cre"), email = "qgeissmann@gmail.com"),
+    person("Quentin", "Geissmann", role = c("aut", "cre"), email = "qgeissmann@gmail.com"),
     person("Luis", "Garcia", role = c("aut"), email = "luis.garcia@uni-muenster.de")
     )
 Description: Use behavioural variables to compute period, rhythmicity and other circadian parameters.
@@ -19,8 +19,6 @@ Suggests:
     testthat,
     covr,
     knitr
-Remotes:
-    rethomics/behavr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

@@ -10,12 +10,12 @@
 #' * `power` -- the power (or equivalent) for a given period
 #' * `p_value` -- the significance of the power
 #' * `signif_threshold` -- the significance threshold of the power (at alpha)
-# @details
-# TODO
 #' @seealso
-#' * [lomb::lsp] the orginal function for `ls_periodogram`
-#' * [xsp::chiSqPeriodogram] (code modified from)
-#' * [acf]  the orginal function for `ac_periodogram`
+#' * [lomb::lsp]  -- the orginal function for `ls_periodogram`
+#' * [xsp::chiSqPeriodogram] -- code modified from
+#' * [stats::acf] -- the orginal function for `ac_periodogram`
+#' @references
+#' * [zeitgebr tutorial](https://rethomics.github.io/zeitgebr.html) -- the relevant rehtomics tutorial
 #' @name periodogram_methods
 NULL
 

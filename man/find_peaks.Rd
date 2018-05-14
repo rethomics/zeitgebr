@@ -13,22 +13,27 @@ find_peaks(data, n_peaks = 3)
 }
 \value{
 \link[behavr:behavr]{behavr::behavr} table that is \code{data} with an extra column \code{peak}.
-\code{peak} is filled with \code{NA} values except for rows match a peak.
-In which case, they have an integer value corresponding to the rank of the peak (e.g. 1 for the first peak).
+\code{peak} is filled with zeros except for rows match a peak.
+In which case, rows have an integer value corresponding to the rank of the peak (e.g. 1 for the first peak).
 }
 \description{
-Locate the peaks in a pregenerated periodogram. Detection is based on \link[pracma:findpeaks]{pracma::findpeaks}.
+This function locates the peaks in a pregenerated periodogram.
+Detection is based on \link[pracma:findpeaks]{pracma::findpeaks}.
 Only the significant (with threshold `alpha``) peaks are extracted.
 }
 \examples{
 data(dams_sample)
-per_dt_xs <- periodogram(activity, dams_sample, FUN=chi_sq_periodogram)
+per_dt_xs <- periodogram(activity, dams_sample, FUN = chi_sq_periodogram)
 per_dt_xs_with_peaks <- find_peaks(per_dt_xs)
-per_dt_xs_with_peaks[peak==1]
-\dontrun{
-ggetho::ggperio(per_dt_xs_with_peaks) + geom_line()  +
-geom_line(aes(y=signif_threshold), colour="blue") +
-geom_point(data = per_dt_xs_with_peaks[peak==1], col="red") +
-facet_wrap( ~ id, ncol = 8, labeller = id_labeller)
+per_dt_xs_with_peaks[peak == 1]
+}
+\references{
+\itemize{
+\item \href{https://rethomics.github.io/zeitgebr.html}{zeitgebr tutorial} -- the relevant rehtomics tutorial
+}
+}
+\seealso{
+\itemize{
+\item \link{periodogram} -- to generate a periodogram in a first place
 }
 }

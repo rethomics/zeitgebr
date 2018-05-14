@@ -5,7 +5,7 @@ ac_periodogram <- function(x,
                            sampling_rate = 1 / mins(1),
                            alpha = 0.05
 ){
-
+  signif_threshold = period = power = p_value = NULL
   max_lag <- period_range[2] * sampling_rate
   min_lag <- period_range[1] * sampling_rate
   res <- acf(x, lag.max = max_lag, plot = F)
@@ -13,7 +13,7 @@ ac_periodogram <- function(x,
 
 
 
-  out <- data.table(period = res$lag[min_lag:length(res$lag)] /sampling_rate,
+  out <- data.table::data.table(period = res$lag[min_lag:length(res$lag)] /sampling_rate,
                      power = res$acf[min_lag:length(res$lag)],
                      signif_threshold = clim
                   )

@@ -32,7 +32,7 @@ ls_periodogram(x, period_range = c(hours(16), hours(32)),
 
 \item{time_resolution}{the resolution of periods to scan}
 
-\item{oversampling}{the oversampling factor}
+\item{oversampling}{the oversampling factor (see \link[lomb:lsp]{lomb::lsp})}
 }
 \value{
 a \link{data.table} with the columns:
@@ -46,10 +46,15 @@ a \link{data.table} with the columns:
 \description{
 These functions provides a series of methods to assess periodicity of circadian processes.
 }
+\references{
+\itemize{
+\item \href{https://rethomics.github.io/zeitgebr.html}{zeitgebr tutorial} -- the relevant rehtomics tutorial
+}
+}
 \seealso{
 \itemize{
-\item \link[lomb:lsp]{lomb::lsp} the orginal function for \code{ls_periodogram}
-\item \link[xsp:chiSqPeriodogram]{xsp::chiSqPeriodogram} (code modified from)
-\item \link{acf}  the orginal function for \code{ac_periodogram}
+\item \link[lomb:lsp]{lomb::lsp}  -- the orginal function for \code{ls_periodogram}
+\item \link[xsp:chiSqPeriodogram]{xsp::chiSqPeriodogram} -- code modified from
+\item \link[stats:acf]{stats::acf} -- the orginal function for \code{ac_periodogram}
 }
 }

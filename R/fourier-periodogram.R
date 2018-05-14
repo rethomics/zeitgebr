@@ -5,6 +5,7 @@ fourier_periodogram <- function(x,
                                 sampling_rate = 1 / mins(1),
                                 alpha = 0.05
                                           ){
+  .N = period = p_value = signif_threshold =  NULL
   raw_periodo <- spec.pgram(x, detrend=TRUE, plot=FALSE)
   out <- data.table::data.table(power = raw_periodo$spec,
                                 period = 1/ (raw_periodo$freq *sampling_rate) # frequence, in seconds

@@ -23,13 +23,32 @@ periodogram(var, data, period_range = c(hours(16), hours(32)),
 \item{...}{additional arguments to be passed to FUN}
 }
 \value{
-a \link{behavr} table with TODO
+A \link[behavr:behavr]{behavr::behavr} table.
+In addition to the metadata, it contains data that encodes a periodogram (i.e. power vs period).
+The data contains the columns:
+\itemize{
+\item \code{power} -- the power the or equivalent (according to \code{FUN})
+\item \code{period} -- the period at which \code{power} is computed (in seconds)
+\item \code{p_value} -- the p value associated to the power estimation
+\item \code{signif threshold} -- the threshold above which power is considered significant
+}
 }
 \description{
-This function builds peroidograms, with one of several methods, for each individual of \link{behavr} table
+This function builds periodograms, with one of several methods, for each individual of a \link{behavr} table
 }
 \examples{
 data(dams_sample)
-pdt <- periodogram(activity, dams_sample, FUN=ls_periodogram, oversampling = 4)
-pdt <- periodogram(activity, dams_sample, FUN=chi_sq_periodogram)
+pdt <- periodogram(activity, dams_sample, FUN = ls_periodogram, oversampling = 4)
+pdt <- periodogram(activity, dams_sample, FUN = chi_sq_periodogram)
+}
+\references{
+\itemize{
+\item \href{https://rethomics.github.io/zeitgebr.html}{zeitgebr tutorial} -- the relevant rehtomics tutorial
+}
+}
+\seealso{
+\itemize{
+\item \link{periodogram_methods} -- the list of built-in methods
+\item \link{find_peaks} -- to find peaks in the periodogram
+}
 }

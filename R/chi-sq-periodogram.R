@@ -7,7 +7,7 @@ chi_sq_periodogram <- function(x,
                            alpha = 0.05,
                            time_resolution = hours(0.1)){
   # lsp can handle time series, so lets use that feature!
-
+  p_value = power = signif_threshold = period = .N = signif_threshold = NULL
   out <- data.table::data.table(
     period = seq(period_range[1],period_range[2],by=time_resolution)
   )
@@ -28,6 +28,7 @@ chi_sq_periodogram <- function(x,
 #' @return a numeric of the calculated chi-squared statistics at the given varPer
 #' @noRd
 calc_Qp <- function(target_period, values, sampling_rate){
+  . = NULL
   col_num <- round(target_period * sampling_rate)
   #row_num <- ceiling(length(values) / col_num)
   row_num <- length(values) / col_num

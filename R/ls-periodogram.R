@@ -1,4 +1,4 @@
-#' @param oversampling the oversampling factor
+#' @param oversampling the oversampling factor (see [lomb::lsp])
 #' @rdname periodogram_methods
 #' @export
 ls_periodogram <- function(x,

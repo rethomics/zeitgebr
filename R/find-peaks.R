@@ -1,34 +1,35 @@
 #' Find peaks in a periodogram
 #'
-#' Locate the peaks in a pregenerated periodogram. Detection is based on [pracma::findpeaks].
+#' This function locates the peaks in a pregenerated periodogram.
+#' Detection is based on [pracma::findpeaks].
 #' Only the significant (with threshold `alpha``) peaks are extracted.
 #'
 #' @param data [behavr::behavr] table representing a periodogram, as returned by [periodogram]
 #' @param n_peaks maximal numbers of peak to be detected
 #' @return [behavr::behavr] table that is `data` with an extra column `peak`.
 #' `peak` is filled with zeros except for rows match a peak.
-#' In which case, they have an integer value corresponding to the rank of the peak (e.g. 1 for the first peak).
+#' In which case, rows have an integer value corresponding to the rank of the peak (e.g. 1 for the first peak).
 #' @examples
 #' data(dams_sample)
-#' per_dt_xs <- periodogram(activity, dams_sample, FUN=chi_sq_periodogram)
+#' per_dt_xs <- periodogram(activity, dams_sample, FUN = chi_sq_periodogram)
 #' per_dt_xs_with_peaks <- find_peaks(per_dt_xs)
-#' per_dt_xs_with_peaks[peak==1]
-#' \dontrun{
-#' ggetho::ggperio(per_dt_xs_with_peaks) + geom_line()  +
-#' geom_line(aes(y=signif_threshold), colour="blue") +
-#' geom_point(data = per_dt_xs_with_peaks[peak==1], col="red") +
-#' facet_wrap( ~ id, ncol = 8, labeller = id_labeller)
-#' }
+#' per_dt_xs_with_peaks[peak == 1]
+#' @seealso
+#' * [periodogram] -- to generate a periodogram in a first place
+#' @references
+#' * [zeitgebr tutorial](https://rethomics.github.io/zeitgebr.html) -- the relevant rehtomics tutorial
 #' @export
 find_peaks <-  function(data, n_peaks=3){
-  out <- copy(data)
-  out[ , peak := find_peaks_wapped(.SD, n_peaks = n_peaks), by=key(data)]
+  .SD =  peak = NULL
+  out <- data.table::copy(data)
+  out[ , peak := find_peaks_wapped(.SD, n_peaks = n_peaks), by = c(data.table::key(out))]
   # peaks are 0, not NA
   out[, peak := ifelse(is.na(peak), 0L, peak)]
 }
 
 #' @noRd
 find_peaks_wapped <- function(d, n_peaks = 3){
+  signif_threshold = NULL
   x <- d[, power - signif_threshold]
 
   peak_mat <- pracma::findpeaks(x,

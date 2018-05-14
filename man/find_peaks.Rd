@@ -19,7 +19,7 @@ In which case, rows have an integer value corresponding to the rank of the peak 
 \description{
 This function locates the peaks in a pregenerated periodogram.
 Detection is based on \link[pracma:findpeaks]{pracma::findpeaks}.
-Only the significant (with threshold `alpha``) peaks are extracted.
+Only the significant (i.e. \code{power > signif_threshold}) peaks are extracted.
 }
 \examples{
 data(dams_sample)

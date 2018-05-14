@@ -2,7 +2,7 @@
 #'
 #' This function locates the peaks in a pregenerated periodogram.
 #' Detection is based on [pracma::findpeaks].
-#' Only the significant (with threshold `alpha``) peaks are extracted.
+#' Only the significant (i.e. `power > signif_threshold`) peaks are extracted.
 #'
 #' @param data [behavr::behavr] table representing a periodogram, as returned by [periodogram]
 #' @param n_peaks maximal numbers of peak to be detected

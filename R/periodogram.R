@@ -19,8 +19,10 @@
 #'
 #' @examples
 #' data(dams_sample)
-#' pdt <- periodogram(activity, dams_sample, FUN = ls_periodogram, oversampling = 4)
-#' pdt <- periodogram(activity, dams_sample, FUN = chi_sq_periodogram)
+#' # only a half of the individuals for the sake of the example
+#' dt <- dams_sample[xmv(region_id) %in% (1:16 * 2)]
+#' pdt <- periodogram(activity, dt, FUN = ls_periodogram, oversampling = 4)
+#' pdt <- periodogram(activity, dt, FUN = chi_sq_periodogram)
 #' @seealso
 #' * [periodogram_methods] -- the list of built-in methods
 #' * [find_peaks] -- to find peaks in the periodogram

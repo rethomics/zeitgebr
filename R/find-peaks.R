@@ -11,7 +11,9 @@
 #' In which case, rows have an integer value corresponding to the rank of the peak (e.g. 1 for the first peak).
 #' @examples
 #' data(dams_sample)
-#' per_dt_xs <- periodogram(activity, dams_sample, FUN = chi_sq_periodogram)
+#' # only a half of the individuals for the sake of the example
+#' dt <- dams_sample[xmv(region_id) %in% (1:16 * 2)]
+#' per_dt_xs <- periodogram(activity, dt, FUN = chi_sq_periodogram)
 #' per_dt_xs_with_peaks <- find_peaks(per_dt_xs)
 #' per_dt_xs_with_peaks[peak == 1]
 #' @seealso

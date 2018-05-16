@@ -7,6 +7,9 @@ Authors@R: c(
     person("Luis", "Garcia", role = c("aut"), email = "luis.garcia@uni-muenster.de")
     )
 Description: Use behavioural variables to compute period, rhythmicity and other circadian parameters.
+  Methods include computation of chi square periodograms (Sokolove and Bushell (1978) <DOI:10.1016/0022-5193(78)90022-X>),
+  Lomb-Scargle periodograms (Lomb (1976) <DOI:10.1007/BF00648343>, Scargle (1982) <DOI:10.1086/160554>, Ruf (1999) <DOI:10.1076/brhm.30.2.178.1422>),
+  and autocorrelation-based periodograms.
 Depends:  
     R (>= 3.00),
     behavr

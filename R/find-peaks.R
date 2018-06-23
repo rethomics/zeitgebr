@@ -18,6 +18,7 @@
 #' per_dt_xs_with_peaks[peak == 1]
 #' @seealso
 #' * [periodogram] -- to generate a periodogram in a first place
+#' * [ggetho::geom_peak] -- a layer to show peaks on a periodogram
 #' @references
 #' * [zeitgebr tutorial](https://rethomics.github.io/zeitgebr.html) -- the relevant rehtomics tutorial
 #' @export

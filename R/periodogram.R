@@ -23,9 +23,15 @@
 #' dt <- dams_sample[xmv(region_id) %in% (1:16 * 2)]
 #' pdt <- periodogram(activity, dt, FUN = ls_periodogram, oversampling = 4)
 #' pdt <- periodogram(activity, dt, FUN = chi_sq_periodogram)
+#' \donttest{
+#' require(ggetho)
+#' ggperio(pdt, aes(colour=period_group)) + stat_pop_etho()
+#' }
+#'
 #' @seealso
 #' * [periodogram_methods] -- the list of built-in methods
 #' * [find_peaks] -- to find peaks in the periodogram
+#' * [ggetho::ggperio] -- to plot periodograms
 #' @references
 #' * [zeitgebr tutorial](https://rethomics.github.io/zeitgebr.html) -- the relevant rehtomics tutorial
 #' @export

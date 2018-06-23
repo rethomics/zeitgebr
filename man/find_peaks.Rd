@@ -37,5 +37,6 @@ per_dt_xs_with_peaks[peak == 1]
 \seealso{
 \itemize{
 \item \link{periodogram} -- to generate a periodogram in a first place
+\item \link[ggetho:geom_peak]{ggetho::geom_peak} -- a layer to show peaks on a periodogram
 }
 }

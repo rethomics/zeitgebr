@@ -42,6 +42,11 @@ data(dams_sample)
 dt <- dams_sample[xmv(region_id) \%in\% (1:16 * 2)]
 pdt <- periodogram(activity, dt, FUN = ls_periodogram, oversampling = 4)
 pdt <- periodogram(activity, dt, FUN = chi_sq_periodogram)
+\donttest{
+require(ggetho)
+ggperio(pdt, aes(colour=period_group)) + stat_pop_etho()
+}
+
 }
 \references{
 \itemize{
@@ -52,5 +57,6 @@ pdt <- periodogram(activity, dt, FUN = chi_sq_periodogram)
 \itemize{
 \item \link{periodogram_methods} -- the list of built-in methods
 \item \link{find_peaks} -- to find peaks in the periodogram
+\item \link[ggetho:ggperio]{ggetho::ggperio} -- to plot periodograms
 }
 }

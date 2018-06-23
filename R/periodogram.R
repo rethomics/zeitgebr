@@ -28,7 +28,6 @@
 #' * [find_peaks] -- to find peaks in the periodogram
 #' @references
 #' * [zeitgebr tutorial](https://rethomics.github.io/zeitgebr.html) -- the relevant rehtomics tutorial
-
 #' @export
 periodogram <- function(var,
                         data,

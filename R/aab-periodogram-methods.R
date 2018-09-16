@@ -14,6 +14,7 @@
 #' * [lomb::lsp]  -- the orginal function for `ls_periodogram`
 #' * [xsp::chiSqPeriodogram] -- code modified from
 #' * [stats::acf] -- the orginal function for `ac_periodogram`
+#' * [WaveletComp::analyze.wavelet] -- the orginal function for `cwt_periodogram`
 #' @references
 #' * [zeitgebr tutorial](https://rethomics.github.io/zeitgebr.html) -- the relevant rehtomics tutorial
 #' @name periodogram_methods

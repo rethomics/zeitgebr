@@ -2,6 +2,7 @@
 
 export(ac_periodogram)
 export(chi_sq_periodogram)
+export(cwt_periodogram)
 export(find_peaks)
 export(fourier_periodogram)
 export(ls_periodogram)

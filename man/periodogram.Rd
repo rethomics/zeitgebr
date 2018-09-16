@@ -5,7 +5,8 @@
 \title{Computes periodograms}
 \usage{
 periodogram(var, data, period_range = c(hours(16), hours(32)),
-  resample_rate = 1/mins(15), alpha = 0.01, FUN = chi_sq_periodogram, ...)
+  resample_rate = 1/mins(15), alpha = 0.01, FUN = chi_sq_periodogram,
+  ...)
 }
 \arguments{
 \item{var}{variable to analyse}

@@ -1,7 +1,7 @@
 Package: zeitgebr
 Title: Analysis of Circadian Behaviours
-Date: 2018-05-17
-Version: 0.3.2
+Date: 2018-06-23
+Version: 0.3.3
 Authors@R: c(
     person("Quentin", "Geissmann", role = c("aut", "cre"), email = "qgeissmann@gmail.com"),
     person("Luis", "Garcia", role = c("aut"), email = "luis.garcia@uni-muenster.de")
@@ -22,7 +22,8 @@ Suggests:
     testthat,
     covr,
     knitr,
-    ggetho
+    ggetho, 
+    damr
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

@@ -39,6 +39,19 @@ A spectrogram is a estimation of the local periodicity of a signal at a given ti
 In the context of circadian rhythm, it can be useful to understand how infradian rhythms change along the day or,
 for instance, how circadian rhythm change ver the course of an multi-day experiment.
 }
+\examples{
+data(dams_sample)
+dt <- dams_sample[id \%in\% dams_sample[meta=TRUE, ,id[1:5]]]
+spect_dt <- spectrogram(activity, data)
+
+\donttest{
+require(ggetho)
+ggspectro(spect_dt,) +
+        stat_tile_etho() +
+        scale_y_log10() +
+        facet_wrap(~ id)
+}
+}
 \seealso{
 \itemize{
 \item \link{periodogram} -- to compute periodogram instead

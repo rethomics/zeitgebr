@@ -270,8 +270,8 @@ dev.off()
 
 #
 ggplot(rejoin(spect_dt), aes(y=period, x=t,z=power)) +
-  stat_tile_etho() + scale_y_log10() +
-  facet_wrap(~ id) +
+    stat_tile_etho() + scale_y_log10() +
+    facet_wrap(~ id) +
   scale_x_days() +
   stat_pop_etho(data= rejoin(spect_dt)[ridge==T], aes(t,period), colour="red", geom="point")
 

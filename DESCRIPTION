@@ -1,7 +1,7 @@
 Package: zeitgebr
 Title: Analysis of Circadian Behaviours
-Date: 2018-06-23
-Version: 0.3.3
+Date: 2018-10-04
+Version: 0.3.4
 Authors@R: c(
     person("Quentin", "Geissmann", role = c("aut", "cre"), email = "qgeissmann@gmail.com"),
     person("Luis", "Garcia", role = c("aut"), email = "luis.garcia@uni-muenster.de")

@@ -44,7 +44,7 @@ spectrogram <- function(var,
                         FUN = cwt_spectrogram,
                         ...){
 
-  n_val = var__ = id =  .N = t0 = .SD = NULL
+  n_val = var__ = id = . = .N = t0 = .SD = NULL
 
   var_of_interest <- deparse(substitute(var))
   regular_data <- resample(data, var_of_interest, resample_rate)

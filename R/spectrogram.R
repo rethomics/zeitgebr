@@ -21,11 +21,11 @@
 #' @examples
 #' data(dams_sample)
 #' dt <- dams_sample[id %in% dams_sample[meta=TRUE, ,id[1:5]]]
-#' spect_dt <- spectrogram(activity, data)
+#' spect_dt <- spectrogram(activity, dt)
 #'
 #' \donttest{
 #' require(ggetho)
-#' ggspectro(spect_dt,) +
+#' ggspectro(spect_dt) +
 #'         stat_tile_etho() +
 #'         scale_y_log10() +
 #'         facet_wrap(~ id)
@@ -33,10 +33,9 @@
 #' @seealso
 #' * [periodogram] -- to compute periodogram instead
 #' * [cwt_spectrogram] -- The dunction use to compute individual spectrograms
-# * [ggetho::ggspectro] -- to plot spectrograms
-# @references
-# * [zeitgebr tutorial](https://rethomics.github.io/zeitgebr.html) -- the relevant rehtomics tutorial
-#TODO ref/tuto
+#' * [ggetho::ggspectro] -- to plot spectrograms
+#' @references
+#' * [spectrogram tutorial](https://rethomics.github.io/ggetho.html#spectrograms) -- the relevant rehtomics tutorial
 #' @export
 spectrogram <- function(var,
                         data,
@@ -45,8 +44,7 @@ spectrogram <- function(var,
                         FUN = cwt_spectrogram,
                         ...){
 
-  n_val = var__ = id = . = .N = t0 = .SD = NULL
-
+  n_val = var__ = id =  .N = t0 = .SD = NULL
 
   var_of_interest <- deparse(substitute(var))
   regular_data <- resample(data, var_of_interest, resample_rate)

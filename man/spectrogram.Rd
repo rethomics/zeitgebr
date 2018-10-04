@@ -42,19 +42,25 @@ for instance, how circadian rhythm change ver the course of an multi-day experim
 \examples{
 data(dams_sample)
 dt <- dams_sample[id \%in\% dams_sample[meta=TRUE, ,id[1:5]]]
-spect_dt <- spectrogram(activity, data)
+spect_dt <- spectrogram(activity, dt)
 
 \donttest{
 require(ggetho)
-ggspectro(spect_dt,) +
+ggspectro(spect_dt) +
         stat_tile_etho() +
         scale_y_log10() +
         facet_wrap(~ id)
+}
+}
+\references{
+\itemize{
+\item \href{https://rethomics.github.io/ggetho.html#spectrograms}{spectrogram tutorial} -- the relevant rehtomics tutorial
 }
 }
 \seealso{
 \itemize{
 \item \link{periodogram} -- to compute periodogram instead
 \item \link{cwt_spectrogram} -- The dunction use to compute individual spectrograms
+\item \link[ggetho:ggspectro]{ggetho::ggspectro} -- to plot spectrograms
 }
 }

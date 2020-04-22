@@ -35,6 +35,9 @@
 #' @references
 #' * [zeitgebr tutorial](https://rethomics.github.io/zeitgebr.html) -- the relevant rehtomics tutorial
 #' @export
+
+
+
 periodogram <- function(var,
                         data,
                         period_range = c(hours(16), hours(32)),
@@ -43,34 +46,41 @@ periodogram <- function(var,
                         FUN = chi_sq_periodogram,
                         ...){
 
-  n_val = var__ = id = . = .N = NULL
+  n_val = var__ = key = . = .N = NULL
 
   var_of_interest <- deparse(substitute(var))
   regular_data <- resample(data, var_of_interest, resample_rate)
 
+  key = data.table::key(regular_data)
+
+
   data.table::setnames(regular_data, var_of_interest, "var__")
 
   reg_data_nval <- regular_data[, .(n_val = length(unique(var__))),
-               by = c(data.table::key(regular_data))]
+                                by = c(key)]
 
-  invalid <- reg_data_nval[n_val < 2, id]
+  invalid <- reg_data_nval[n_val < 2][[key]]
+
+
   if(length(invalid) > 0)
-    warning(sprintf("Removing individuals that have only one unique value for `val`:\n%s",paste(invalid, sep="\n")))
+    warning(sprintf("Removing individuals that have only one unique value for `val`:\n%s",
+                    paste(invalid, sep="\n")))
 
-  regular_data <- regular_data[!(id %in% invalid)]
+
+  regular_data <- regular_data[!(key %in% invalid)]
   regular_data[, FUN(var__,
                      period_range = period_range,
                      sampling_rate = resample_rate,
                      alpha = alpha,
                      ...),
-               by = c(data.table::key(data))]
+               by = c(key)]
 
 }
 
 #' helper unit-testable function
 #' @noRd
 resample <- function(data, var_of_interest, resample_rate){
-  .N = id = .SD = NULL
+  .N  = .SD = NULL
   regular_data <- behavr::bin_apply_all(data,
                                         x = "t",
                                         y = var_of_interest,
@@ -82,7 +92,6 @@ resample <- function(data, var_of_interest, resample_rate){
     data.table::setnames(out, c("x", "y"), c("t",var_of_interest))
     out
   }
-
-  regular_data <- regular_data[, f(.SD), by=id]
+  regular_data <- regular_data[, f(.SD), by=c(data.table::key(regular_data))]
   regular_data
 }

@@ -39,10 +39,32 @@ test_that("periodrogram warns when id have no data", {
   reg_data_nval <- dams_sample2[, .(n_val =length(unique(activity))),
                                 by = c(data.table::key(dams_sample2))]
 
-  expect_warning(periodogram(activity, dams_sample2, FUN=chi_sq_periodogram),
-                 "2017-01-16 08:00:00\\|dams_sample\\.txt\\|01")
+  expect_warning(
+            periodogram(activity, dams_sample2, FUN=chi_sq_periodogram),
+            "2017-01-16 08:00:00\\|dams_sample\\.txt\\|01")
 
 })
 
 
+
+# https://github.com/rethomics/ggetho/issues/32
+test_that("periodrogram runs when the is not named `id`", {
+  data(dams_sample)
+  dams_sample2 <- copy(dams_sample)
+  dams_sample2[id == "2017-01-16 08:00:00|dams_sample.txt|01", activity := 1]
+  dams_sample2[id == "2017-01-16 08:00:00|dams_sample.txt|01"]
+
+  setnames(dams_sample2, 'id', 'ID')
+  m <- dams_sample2[meta=T]
+  setnames(m, 'id', 'ID')
+  dams_sample2 <- behavr(dams_sample2, m)
+
+
+  reg_data_nval <- dams_sample2[, .(n_val =length(unique(activity))),
+                                by = c(data.table::key(dams_sample2))]
+
+  expect_warning(
+    periodogram(activity, dams_sample2, FUN=chi_sq_periodogram),
+    "2017-01-16 08:00:00\\|dams_sample\\.txt\\|01")
+})
 

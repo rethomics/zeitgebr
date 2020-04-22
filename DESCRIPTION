@@ -1,7 +1,7 @@
 Package: zeitgebr
 Title: Analysis of Circadian Behaviours
-Date: 2018-10-04
-Version: 0.3.4
+Date: 2020-04-22
+Version: 0.3.5
 Authors@R: c(
     person("Quentin", "Geissmann", role = c("aut", "cre"), email = "qgeissmann@gmail.com"),
     person("Luis", "Garcia", role = c("aut"), email = "luis.garcia@uni-muenster.de")
@@ -23,11 +23,12 @@ Suggests:
     covr,
     knitr,
     ggetho, 
-    damr
+    damr,
+    xsp
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/rethomics/zeitgebr
 BugReports: https://github.com/rethomics/zeitgebr/issues
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)

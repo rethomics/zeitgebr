@@ -6,7 +6,7 @@
 `zeitgebr` is part of the [rethomics framework](https://rethomics.github.io/).
 This README is a short explanation of the basics of `zeitgebr`.
 A comprehensive tutorial is available on the [rethomics webpage](https://rethomics.github.io/zeitgebr.html).
-We also provide a [conventional pdf documentation](zeitgebr.pdf).
+We also provide a [conventional pdf documentation](https://github.com/rethomics/zeitgebr/raw/master/zeitgebr.pdf).
 
 
 ## Installation

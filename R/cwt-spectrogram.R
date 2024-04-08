@@ -42,7 +42,7 @@ cwt_spectrogram <- function(x,
   data.table::setnames(out, c("period", "t","power", "ridge"))
   out[, t :=  floor(t/summary_time_window) * summary_time_window]
   out[, period :=  2^period  / sampling_rate]
-  out[, .(power=mean(power), ridge=(sum(ridge))), by="t,period"]
+  out[, .(power=mean(power), ridge=(sum(ridge))), by=c("t","period")]
   ridge_period_dt <- out[,  .(period_at_ridge = ifelse(max(ridge) > 0, period[which.max(ridge)],NA_real_)), by="t"]
 
   out <- ridge_period_dt[out, on=c("t")]

@@ -1,9 +1,9 @@
 #' Computes periodograms
 #'
-#' This function builds periodograms, with one of several methods, for each individual of a [behavr] table
+#' This function builds periodograms, with one of several methods, for each individual of a [behavr::behavr] table
 #'
 #' @param var variable to analyse
-#' @param data [behavr] table
+#' @param data [behavr::behavr] table
 #' @param period_range vector of size 2 defining minimal and maximal range of period to study (in seconds)
 #' @param resample_rate frequency to resample (up or down) the data at (in hertz)
 #' @param alpha  significance level

@@ -5,7 +5,7 @@
 #' @param x numeric vector
 #' @param sampling_rate the -- implicitly regular -- sampling rate of x (in hertz)
 #' @inheritParams periodogram
-#' @return a [data.table] with the columns:
+#' @return a [data.table::data.table] with the columns:
 #' * `period` -- the period (in s)
 #' * `power` -- the power (or equivalent) for a given period
 #' * `p_value` -- the significance of the power
